@@ -28,10 +28,14 @@ export const translate = (string = "") => {
   if (string.length > 0 ) {
     for (var i = 0; i < (string.length); i += 3) {
       const codon = string.slice(i, i + 3);
-      console.log(`Codon: ${codon} ${i}`)
+
       if (codonMap[codon] === "STOP") {
         i = string.length
         return mappedProteins;
+      } 
+
+      if (!Object.keys(codonMap).includes(codon)) {
+        throw new Error('Invalid codon');
       }
 
       mappedProteins.push(codonMap[codon]);
