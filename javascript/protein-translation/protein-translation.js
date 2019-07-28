@@ -29,6 +29,11 @@ export const translate = (string = "") => {
     for (var i = 0; i < (string.length); i += 3) {
       const codon = string.slice(i, i + 3);
       console.log(`Codon: ${codon} ${i}`)
+      if (codonMap[codon] === "STOP") {
+        i = string.length
+        return mappedProteins;
+      }
+
       mappedProteins.push(codonMap[codon]);
     }
   }
