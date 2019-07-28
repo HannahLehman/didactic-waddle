@@ -26,8 +26,11 @@ export const translate = (string = "") => {
   const mappedProteins = [];
 
   if (string.length > 0 ) {
-    const first = string.split(0, 2);
-    mappedProteins.push(codonMap[first]);
+    for (var i = 0; i < (string.length); i += 3) {
+      const codon = string.slice(i, i + 3);
+      console.log(`Codon: ${codon} ${i}`)
+      mappedProteins.push(codonMap[codon]);
+    }
   }
 
   return mappedProteins;
